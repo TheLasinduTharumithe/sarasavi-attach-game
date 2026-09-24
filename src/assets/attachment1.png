@@ -1,3 +1,268 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e9838499903d8240ecd570dbef37973c66825fa8b36cbe4d1e8128d551ab8898
-size 8161
+Update the existing **Book Fair 2026 – Match the Author** game. The current connection-line interface is not user-friendly and does not work correctly. Remove the line-drawing system completely and replace it with a simple, reliable drag-and-drop interface.
+
+## Main Game Requirements
+
+Create a single-page matching game with:
+
+* Five author cards
+* Five book-cover drop boxes
+* Authors and books selected randomly from the complete collection of 20 books
+* Authors and books shuffled into different positions
+* No login page
+* No registration form
+* No separate voucher page
+* No connection lines
+
+The player must drag each author card and drop it into the box belonging to the correct book.
+
+## Company Theme
+
+Use the attached company image as the visual reference for:
+
+* Company logo
+* Primary and secondary colors
+* Background colors
+* Button colors
+* Font style
+* Border and card styling
+* Overall branding
+
+Do not invent a different theme. Keep the company logo clear and maintain its original proportions.
+
+## Page Layout
+
+### Header
+
+Display:
+
+* Company logo from the attached image
+* “Book Fair 2026”
+* Game title: “Match the Author”
+* Short instruction:
+  “Drag each author and drop them onto the correct book.”
+
+### Author Section
+
+Create a clearly labeled box titled:
+
+**Authors**
+
+Inside this box, display five draggable author cards.
+
+Each author card must contain:
+
+* Author name
+* Author image, if provided
+* Drag icon or visual indicator
+* Clear card border
+* Touch-friendly size
+
+### Book Section
+
+Create a clearly labeled box titled:
+
+**Books**
+
+Display five book drop boxes in a responsive grid.
+
+Each book box must contain:
+
+* Book-cover image
+* Book title
+* An empty area labeled:
+  “Drop Author Here”
+
+The author and book sections must have separate framed containers so users can easily understand what they need to do.
+
+## Drag-and-Drop Behaviour
+
+The drag-and-drop interaction must work smoothly with:
+
+* Desktop mouse controls
+* Laptop touchpads
+* Mobile touchscreen controls
+* Tablet touchscreen controls
+
+When the player starts dragging an author:
+
+* Slightly enlarge or highlight the author card.
+* Highlight all available book drop boxes.
+* Display a clear dragging effect.
+
+When the author is dropped onto a book, immediately check the answer.
+
+### Correct Match
+
+If the author matches the book:
+
+* Change the complete book-box frame to green.
+* Display a green checkmark.
+* Display the text:
+  “Correct Match”
+* Move the author card into the book box.
+* Lock the author and book together.
+* Prevent the correctly matched author from being moved again.
+* Remove that author from the available Authors section.
+* Increase the correct-match count.
+
+### Incorrect Match
+
+If the author does not match the book:
+
+* Change the book-box frame to red.
+* Display a red cross icon.
+* Display the text:
+  “Incorrect Match – Try Again”
+* Briefly shake the book box.
+* Return the author card to its original position in the Authors section.
+* Do not lock the incorrect author into the book box.
+* Return the book-box frame to its normal color after approximately two seconds.
+* Allow the player to try again.
+
+Do not reveal the correct author after an incorrect attempt.
+
+## Progress Display
+
+Show a simple progress indicator:
+
+**Correct Matches: 0/5**
+
+Update it after every correct match:
+
+* 1/5
+* 2/5
+* 3/5
+* 4/5
+* 5/5
+
+Correctly matched books must remain green and locked while the player continues matching the remaining books.
+
+## Winning Condition
+
+The player wins only when all five authors have been correctly dragged onto their matching books.
+
+Required result:
+
+**5 correct matches out of 5**
+
+Do not use a Submit button. Validate each match immediately after the author is dropped.
+
+## Winning Display
+
+When all five matches are correct:
+
+* Stop all further game interaction.
+* Keep all five correctly matched book boxes green.
+* Show a full-screen celebration animation.
+* Add confetti and a smooth success animation.
+* Display only the following text:
+
+**Congratulations!**
+
+**You Win a Voucher!**
+
+Do not display:
+
+* The player’s score
+* Voucher codes
+* Voucher details
+* Additional instructions
+* Registration forms
+* Login forms
+* Another page
+* Try Again button
+* Claim forms
+* Extra messages
+
+The final winning display must contain only the congratulations animation and the “You Win a Voucher!” message.
+
+## Random Book Selection
+
+The complete game collection contains 20 books.
+
+For every new game:
+
+1. Randomly select five unique books.
+2. Load the correct author for each selected book.
+3. Shuffle the five author cards.
+4. Shuffle the five book boxes independently.
+5. Ensure no duplicate book appears.
+6. Ensure no duplicate author appears.
+7. Ensure every displayed book has exactly one correct author.
+
+Use only the book covers, titles, author names, author images, and company branding supplied by the administrator. Do not invent any content.
+
+## Responsive Design
+
+### Desktop
+
+* Authors section can appear on the left.
+* Books section can appear on the right.
+* Display book boxes in a clean grid.
+
+### Mobile and Tablet
+
+* Display the Authors section above the Books section.
+* Allow users to drag author cards vertically.
+* Automatically scroll the page while dragging near the top or bottom.
+* Make book drop boxes large enough for touchscreen use.
+* Prevent the page itself from interfering with the drag action.
+* Provide tap-to-select and tap-to-drop as a fallback if native dragging is difficult on a mobile device.
+
+For the mobile fallback:
+
+1. Tap an author card to select it.
+2. Tap a book box to place the selected author.
+3. Apply the same green or red validation behaviour.
+
+## Technical Requirements
+
+Use:
+
+* Next.js
+* TypeScript
+* Tailwind CSS
+* A reliable drag-and-drop library such as `@dnd-kit/core`
+* Responsive image components
+* Smooth CSS animations
+* Confetti animation after winning
+
+Implementation requirements:
+
+* Remove all previous SVG connection-line code.
+* Use clear draggable and droppable components.
+* Give every author and book a unique ID.
+* Validate matches using IDs, not displayed text.
+* Prevent duplicate drops.
+* Disable a book box after a correct match.
+* Disable an author card after a correct match.
+* Preserve correct matches if another answer is incorrect.
+* Prevent the same author from being placed in multiple books.
+* Prevent multiple authors from being locked into the same book.
+* Handle missing images with a clean placeholder.
+* Keep the interface fast and easy to understand.
+
+## Acceptance Criteria
+
+The updated game is complete when:
+
+1. The entire game works on one page.
+2. There are separate framed sections for Authors and Books.
+3. Five authors and five book covers are displayed.
+4. Author cards can be dragged and dropped onto book boxes.
+5. Touchscreen users can select and place authors easily.
+6. A correct match immediately changes the complete book frame to green.
+7. A correct match displays a green checkmark and “Correct Match.”
+8. Correct matches remain locked.
+9. An incorrect match immediately changes the book frame to red.
+10. An incorrect match displays a red cross and “Incorrect Match – Try Again.”
+11. The incorrect author automatically returns to the Authors section.
+12. No Submit button is required.
+13. Progress updates from 0/5 to 5/5.
+14. All five matches must be correct to win.
+15. After 5/5 correct matches, a celebration animation appears.
+16. The final winning display contains only “Congratulations!” and “You Win a Voucher!”
+17. The attached company image is used as the branding and color-theme reference.
+18. The game works correctly on desktop, mobile, and tablet devices.
+
+Replace the existing matching interface with this drag-and-drop design. Test every drag, drop, correct-answer, incorrect-answer, mobile-touch, locking, and winning-animation state before considering the game complete.
