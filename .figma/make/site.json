@@ -1,0 +1,11 @@
+{
+  "title": "authors",
+  "description": "Engage in a fun and interactive attach game designed for players of all ages, enhancing strategic thinking and providing endless entertainment.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

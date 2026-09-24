@@ -1,0 +1,20 @@
+{
+  "indexes": [],
+  "fieldOverrides": [
+    {
+      "collectionGroup": "sarasavi_books",
+      "fieldPath": "coverImage",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "sarasavi_books",
+      "fieldPath": "authorImage",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "sarasavi_config",
+      "fieldPath": "imageBase64",
+      "indexes": []
+    }
+  ]
+}
